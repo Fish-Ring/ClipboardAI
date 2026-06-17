@@ -1,0 +1,17 @@
+# Build
+bin/
+obj/
+dist/
+
+# User data
+history.json
+
+# IDE
+.vs/
+*.user
+*.suo
+*.sln.docstates
+
+# OS
+Thumbs.db
+.DS_Store
