@@ -1,4 +1,4 @@
-> [简体中文](../zh-CN/config.md) · [Back to Home](../README.md)
+> [简体中文](../zh-CN/config.md) · [Back to Home](../../README.md)
 
 # Configuration Details
 
