@@ -1,52 +1,91 @@
 # ClipboardAI
 
-A Windows system tray tool that monitors clipboard text, sends it to an OpenAI-compatible LLM API, and writes the result back to clipboard automatically.
+剪贴板 AI 助手 — 选中文本，一键发送给 OpenAI 兼容大模型，自动写回剪贴板。
 
-## Features
+[下载最新版](https://github.com/Fish-Ring/ClipboardAI/releases/latest)
 
-- **Hotkey trigger** — Press `Alt+C` (configurable) to process selected text via LLM
-- **Clipboard monitoring** — Auto-process any copied text (toggle on/off)
-- **Multi-prompt presets** — Switch between different system prompts (Translate, Summarize, Q&A, Polish, etc.)
-- **History** — Recent processing history with status icons (✓/✗/⋯), persisted across restarts
-- **Detail viewer** — Click any history entry to see full original text and AI response
-- **Config GUI** — Full settings UI: API endpoint, key, model, prompts, hotkey, notifications, sound
-- **Customizable** — Edit `config.json` directly for advanced configuration
-- **Portable** — Self-contained single-file executable, no dependencies
+---
 
-## Screenshots
+## 特性
 
-<!-- TODO: Add screenshots -->
+- **剪贴板监控** — 自动检测剪贴板变化，无需手动粘贴
+- **全局快捷键** — `Alt+C`（可自定义）快速触发处理
+- **多 Prompt 预设** — 翻译、润色、问答、总结等，自由添加
+- **AI 后端自由** — 兼容 OpenAI /chat/completions 接口，支持自定义 API 地址和模型
+- **处理历史** — 自动记录每次处理，方便回溯
+- **拖放临时配置** — 拖入 config.json 加载临时配置，不影响永久设置
+- **提示音反馈** — AI 返回结果后播放简短提示音
+- **Windows 托盘** — 常驻托盘，双击打开设置，右键菜单操作
+- **多语言** — 简体中文 / English 自动切换
+- **零配置启动** — 首次运行自动生成默认配置
 
-## Prerequisites
+---
 
-- Windows 10/11 (64-bit)
-- [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) (only if building from source)
+## 快速安装
 
-## Download
-
-Download the latest build from [Releases](../../releases).
-
-Or build from source:
-
-```bash
-dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -o dist/
+```powershell
+# 从源码构建（需要 .NET 8 SDK）
+git clone https://github.com/Fish-Ring/ClipboardAI.git
+cd ClipboardAI/ClipboardAI
+dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -o dist
 ```
 
-The executable will be at `dist/ClipboardAI.exe`.
+或直接下载 [Releases 页面](https://github.com/Fish-Ring/ClipboardAI/releases/latest) 的 `ClipboardAI.exe`。
 
-## Configuration
+---
 
-Config is stored at `%APPDATA%\ClipboardAI\config.json` after first launch. You can edit it manually or use the built-in config GUI.
+## 快速开始
 
-### Default Prompts
+1. 运行 `ClipboardAI.exe`，程序常驻托盘
+2. 复制任意文本
+3. 按 `Alt+C`（或右键托盘图标选择 Prompt）
+4. AI 处理完成后自动写回剪贴板
 
-| Name | ID | System Prompt |
-|---|---|---|
-| 回答问题 | qa | Chinese Q&A, plain text output (no markdown) |
-| 翻译中文 | translate | Translate to Simplified Chinese |
-| 润色文本 | polish | Polish text professionally |
-| AI 总结 | summarize | Summarize in Chinese |
+首次运行会自动在 `%APPDATA%\ClipboardAI\` 生成 `config.json`，可编辑或使用设置窗口配置。
 
-## License
+---
+
+## 配置
+
+| 配置项 | 说明 |
+|--------|------|
+| `apiBase` | API 地址，默认 `https://api.openai.com/v1` |
+| `apiKey` | 你的 API Key |
+| `model` | 模型名称，默认 `gpt-4o-mini` |
+| `temperature` | 创造性，0.0–2.0，默认 0.3 |
+| `maxTokens` | 最大输出 token，默认 2048 |
+| `hotkeyEnabled` | 是否启用全局快捷键 |
+| `hotkeyModifiers` | 修饰键（Alt/Ctrl/Shift） |
+| `hotkeyKey` | 触发键 |
+| `showNotifications` | 是否显示 Windows 托盘通知 |
+| `clipboardMonitoringEnabled` | 是否监控剪贴板变化 |
+| `playSoundOnComplete` | 完成时播放提示音 |
+| `language` | 界面语言（zh-CN / en） |
+
+---
+
+## 拖放临时配置
+
+将 `config.json` 拖到 `ClipboardAI.exe` 上即可加载临时配置：
+
+- 仅当前会话有效，不影响永久配置
+- 配置窗口修改不会保存
+- 历史记录仅在内存中保留
+- 下次启动自动回到永久配置
+
+托盘显示 `ClipboardAI [临时]` 标识。
+
+---
+
+## 文档
+
+- [配置详情](docs/zh-CN/config.md)
+- [Prompt 预设指南](docs/zh-CN/prompts.md)
+
+[English](docs/en/README.md)
+
+---
+
+## 许可证
 
 MIT
