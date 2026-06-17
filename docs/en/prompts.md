@@ -1,3 +1,5 @@
+> [简体中文](../zh-CN/prompts.md) · [Back to Home](../README.md)
+
 # Prompt Presets Guide
 
 ## Contents

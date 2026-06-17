@@ -1,3 +1,5 @@
+> [English](docs/en/README.md)
+
 # ClipboardAI
 
 剪贴板 AI 助手 — 选中文本，一键发送给 OpenAI 兼容大模型，自动写回剪贴板。
@@ -81,8 +83,6 @@ dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=
 
 - [配置详情](docs/zh-CN/config.md)
 - [Prompt 预设指南](docs/zh-CN/prompts.md)
-
-[English](docs/en/README.md)
 
 ---
 

@@ -1,3 +1,5 @@
+> [English](../en/config.md) · [返回首页](../README.md)
+
 # 配置详情
 
 ## 目录

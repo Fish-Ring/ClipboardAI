@@ -1,3 +1,5 @@
+> [简体中文](../zh-CN/config.md) · [Back to Home](../README.md)
+
 # Configuration Details
 
 ## Contents

@@ -1,3 +1,5 @@
+> [English](../en/prompts.md) · [返回首页](../README.md)
+
 # Prompt 预设指南
 
 ## 目录

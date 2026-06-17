@@ -1,4 +1,4 @@
-> [简体中文](../zh-CN/README.md)
+> [简体中文](../README.md)
 
 # ClipboardAI
 
@@ -81,8 +81,8 @@ Tray displays `ClipboardAI [Temporary]` indicator.
 
 ## Documentation
 
-- [Configuration Details](docs/en/config.md)
-- [Prompt Presets Guide](docs/en/prompts.md)
+- [Configuration Details](config.md)
+- [Prompt Presets Guide](prompts.md)
 
 ---
 
