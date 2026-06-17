@@ -19,12 +19,12 @@ public class AppContext
     private CancellationTokenSource? _cts;
     private bool _processing;
 
-    public AppContext()
+    public AppContext(string? tempConfigPath = null)
     {
-        Config = new ConfigManager();
+        Config = new ConfigManager(tempConfigPath);
         _monitor = new ClipboardMonitor();
         _llm = new LlmService(Config);
-        _history = new HistoryManager();
+        _history = new HistoryManager(Config.IsTempMode);
         I18n.Lang = Config.Data.Language;
         _tray = new TrayIcon(this);
 
@@ -37,6 +37,9 @@ public class AppContext
         RegisterHotkeyFromConfig();
 
         Config.ConfigChanged += OnConfigChanged;
+
+        if (Config.IsTempMode)
+            _tray.ShowNotification(I18n.Get("Status.TempConfig"));
     }
 
     private async void OnTextCopied(string text)

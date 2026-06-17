@@ -28,6 +28,8 @@ public class TrayIcon : IDisposable
         _notifyIcon.Visible = true;
         _notifyIcon.ContextMenuStrip = _menu;
         _notifyIcon.BalloonTipTitle = "ClipboardAI";
+        if (_context.Config.IsTempMode)
+            _notifyIcon.Text = "ClipboardAI [临时]";
         _notifyIcon.DoubleClick += (s, e) => _context.ShowConfigForm();
 
         BuildMenu();

@@ -46,6 +46,10 @@ public class ConfigManager : IDisposable
     private FileSystemWatcher? _watcher;
     private bool _suppressReload;
     private readonly object _lock = new();
+    private bool _isTempMode;
+    private string? _tempConfigPath;
+
+    public bool IsTempMode => _isTempMode;
 
     public ConfigData Data
     {
@@ -54,10 +58,21 @@ public class ConfigManager : IDisposable
 
     public event Action? ConfigChanged;
 
-    public ConfigManager()
+    public ConfigManager() : this(null) { }
+
+    public ConfigManager(string? tempConfigPath)
     {
-        Load();
-        StartWatching();
+        if (tempConfigPath != null && File.Exists(tempConfigPath))
+        {
+            _isTempMode = true;
+            _tempConfigPath = tempConfigPath;
+            LoadTemp();
+        }
+        else
+        {
+            Load();
+            StartWatching();
+        }
     }
 
     public void Load()
@@ -126,8 +141,27 @@ public class ConfigManager : IDisposable
             data.CurrentPromptId = data.Prompts.First().Id;
     }
 
+    private void LoadTemp()
+    {
+        try
+        {
+            var json = File.ReadAllText(_tempConfigPath!);
+            var data = JsonSerializer.Deserialize<ConfigData>(json, _jsonOptions);
+            if (data != null)
+            {
+                EnsurePrompts(data, json);
+                lock (_lock) _data = data;
+            }
+        }
+        catch
+        {
+            SaveDefault();
+        }
+    }
+
     public void Save()
     {
+        if (_isTempMode) return;
         lock (_lock)
         {
             _suppressReload = true;

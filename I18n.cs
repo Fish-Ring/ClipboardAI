@@ -32,6 +32,7 @@ public static class I18n
             ["Status.Enabled"] = "已启用",
             ["Status.Disabled"] = "已禁用",
             ["Status.SwitchPrompt"] = "已切换至「{0}」",
+            ["Status.TempConfig"] = "临时配置已加载 (关闭后重置)",
 
             // Config
             ["Config.Title"] = "ClipboardAI 配置",
@@ -122,6 +123,7 @@ public static class I18n
             ["Status.Enabled"] = "Enabled",
             ["Status.Disabled"] = "Disabled",
             ["Status.SwitchPrompt"] = "Switched to 「{0}」",
+            ["Status.TempConfig"] = "Temporary config loaded (reset on restart)",
 
             ["Config.Title"] = "ClipboardAI Settings",
             ["Config.TabApi"] = "API Settings",

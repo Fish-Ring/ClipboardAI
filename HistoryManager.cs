@@ -32,13 +32,18 @@ public class HistoryManager
 
     private readonly LinkedList<HistoryEntry> _entries = new();
     private int _maxEntries = 20;
+    private readonly bool _isTempMode;
 
     public int Count => _entries.Count;
 
-    public HistoryManager()
+    public HistoryManager(bool isTempMode = false)
     {
-        Directory.CreateDirectory(Path.GetDirectoryName(HistoryPath)!);
-        Load();
+        _isTempMode = isTempMode;
+        if (!_isTempMode)
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(HistoryPath)!);
+            Load();
+        }
     }
 
     public void AddEntry(HistoryEntry entry)
@@ -70,6 +75,7 @@ public class HistoryManager
 
     private void Save()
     {
+        if (_isTempMode) return;
         try
         {
             var list = _entries.ToList();

@@ -5,7 +5,7 @@ namespace ClipboardAI.Forms;
 
 public partial class AboutWindow
 {
-    private const string CurrentVersion = "0.0.4";
+    private const string CurrentVersion = "0.0.5";
     private static readonly HttpClient Http = new();
     private string? _latestVersion;
 
