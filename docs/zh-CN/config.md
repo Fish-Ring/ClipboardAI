@@ -1,4 +1,4 @@
-> [English](../en/config.md) · [返回首页](../../README.md)
+> [English](../en/config.md) · [返回首页](https://github.com/Fish-Ring/ClipboardAI)
 
 # 配置详情
 

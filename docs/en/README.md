@@ -1,4 +1,4 @@
-> [简体中文](../../README.md)
+> [简体中文](https://github.com/Fish-Ring/ClipboardAI/blob/master/README.md)
 
 # ClipboardAI
 

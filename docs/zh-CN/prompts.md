@@ -1,4 +1,4 @@
-> [English](../en/prompts.md) · [返回首页](../../README.md)
+> [English](../en/prompts.md) · [返回首页](https://github.com/Fish-Ring/ClipboardAI)
 
 # Prompt 预设指南
 
